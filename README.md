@@ -1,4 +1,5 @@
 # Artificial-Intelligence-for-Biosound-Based-Healthcare-SLR
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22214645.svg)](https://doi.org/10.5281/zenodo.22214645)
 Protocol, methodological resources, and supplementary materials for a systematic review of machine learning using biosound signals for health condition detection via mobile and wearable technologies.
 ## Systematic Review Protocol
 
@@ -30,7 +31,13 @@ The deposited protocol will remain preserved as a versioned record. Subsequent a
 
 ## Citation
 
-Citation information and the DOI corresponding to the archived version of this repository will be added following deposition in Zenodo.
+The systematic review protocol (Version 1.0) is permanently archived in Zenodo.
+
+**DOI:** [10.5281/zenodo.22214645](https://doi.org/10.5281/zenodo.22214645)
+
+If you use or refer to this protocol, please cite:
+
+> Tena del Pozo, A., Torres Espuña, I., León, B., & Solsona, F. (2026). *Protocol of the Systematic Literature Review: Artificial Intelligence for Biosound-Based Healthcare: A Systematic Review of Machine Learning, Deployment Architectures, and Technological Maturity* (Version v1.0). Zenodo. https://doi.org/10.5281/zenodo.22214645
 
 ## Licence
 
