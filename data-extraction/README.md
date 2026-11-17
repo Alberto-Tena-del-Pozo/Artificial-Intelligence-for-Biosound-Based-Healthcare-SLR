@@ -20,7 +20,7 @@ This directory contains the prompts used for data extraction and the subsequent 
 
 ## Audit prompt
 
-The [conservative audit prompt](audit/extraction-audit-prompt.md) takes three inputs:
+The [audit prompt](audit/extraction-audit-prompt.md) takes three inputs:
 
 1. The extraction rules relevant to the review.
 2. The existing row from the completed data-extraction matrix.
@@ -31,4 +31,4 @@ The reviewer retains defensible entries, checks the source further when the supp
 ## AI tool
 
 - **Tool:** ChatGPT (OpenAI).
-- **Model:** [Insert the model label used for extraction and audit. If they differed, report both.]
+- **Model:** [GPT-6]
