@@ -1,231 +1,60 @@
 # Prompt — Conservative Audit of an Existing SLR Data-Extraction Matrix
 
-You are acting as an independent methodological auditor of an already completed systematic literature review (SLR).
+You are auditing a completed systematic literature review (SLR) data-extraction matrix. Assess whether each existing field value is supported by the supplied evidence under the extraction rules. Retain values that meet those rules, even when another interpretation or wording would also be defensible.
 
-## IMPORTANT CONTEXT
-
-The SLR data-extraction process has already been completed after several months of work. Your task is NOT to redo the extraction from scratch, optimize the taxonomy, redesign the coding framework, or propose alternative classifications whenever another interpretation might also be possible.
-
-Your task is to determine whether the existing extraction is credible, defensible, and sufficiently supported by the original articles.
-
-The audit must therefore be CONSERVATIVE.
-
-A change should only be recommended when:
-
-1. the extracted value is clearly contradicted by the original article;
-2. there is insufficient evidence in the article to sustain the extracted value under the provided extraction rules;
-3. the value creates a material internal inconsistency with other extracted fields;
-4. the error could materially affect the synthesis, interpretation, or methodological credibility of the SLR.
-
-Do NOT recommend changes merely because:
-
-- another terminology could be more precise;
-- another classification could also be defensible;
-- you personally would have coded the article differently;
-- the wording could be improved;
-- a field could contain more detail;
-- a more conservative interpretation is theoretically possible but the existing one remains reasonably defensible.
-
-The objective is to identify MATERIAL EXTRACTION ERRORS, not minor imperfections.
-
-## INPUT I WILL PROVIDE
+## Inputs
 
 For each article, I will provide:
 
-1. The extraction rules/taxonomies relevant to the SLR.
+1. The extraction rules relevant to the SLR.
 2. The existing row from the completed data-extraction matrix.
-3. The full article, or sufficiently detailed excerpts/annotations from the original article.
+3. The excerpts/annotations from the original article.
 
-You must evaluate the extraction strictly against:
+Use the supplied excerpts and annotations as the evidence for the audit. Apply the extraction rules as provided.
 
-- the original article;
-- the extraction rules I provide.
+## Field-level verdicts
 
-Do not introduce new extraction criteria retrospectively.
+Assign exactly one verdict to each field in the existing row:
 
-## AUDIT PROCEDURE
+- **CORRECT:** The supplied evidence supports the existing value, or the value is reasonably defensible under the extraction rules. Retain it. A plausible alternative interpretation alone does not warrant review.
+- **INCORRECT:** The supplied evidence clearly contradicts the value, establishes that it fails to meet an applicable extraction rule, or confirms a material inconsistency with another field. Explain the issue and recommend a correction when the evidence supports a specific replacement.
+- **NEEDS REVIEW:** The supplied excerpts or annotations are incomplete, ambiguous or conflicting in a way that prevents a reliable verdict. State what evidence is needed and retain the existing value pending verification. Absence of evidence in the supplied excerpts does not establish absence from the article.
 
-For each article:
+Audit every field in the row, including empty fields and values such as “Not reported”, using the same rules. For a **CORRECT** field, the verdict alone is sufficient. For **INCORRECT** or **NEEDS REVIEW**, give a brief reason and identify the relevant excerpt, annotation or source location when available.
 
-### 1. Overall assessment
+## Checks to prioritise
 
-First classify the extraction as:
+- **Architecture and deployment.** Check consistency across computational workflow, infrastructure, deployment strategy, deployment maturity, real-time capability and privacy mechanisms. Distinguish what the authors proposed from what they implemented or demonstrated. Identify the field responsible for an inconsistency when the evidence allows it. Use **NEEDS REVIEW** for the affected fields if the supplied evidence does not establish which value is wrong.
+- **Results and validation.** Check that numerical values match the evidence and refer to the stated task, cohort or experimental condition. Verify the reported validation strategies and distinguish subject-independent evaluation from recording-level splits. For computational results, check what the runtime or resource metric actually measures.
+- **Scope of corrections.** Recommend changes for substantiated extraction errors. Preserve defensible values when differences concern wording, terminology, level of detail or another plausible interpretation. Request additional metrics only when the extraction rules require them.
 
-PASS
+## Output format
 
-The row is credible and defensible. No changes are necessary.
-
-PASS WITH MINOR UNCERTAINTIES
-
-Some fields may admit alternative interpretations or have weaker evidence, but the current extraction remains reasonably defensible and does not require modification.
-
-CORRECTION REQUIRED
-
-At least one field contains a clear or material extraction error that should be corrected.
-
-Use "CORRECTION REQUIRED" only when there is a genuine reason to modify the completed matrix.
-
-### 2. Field-by-field verification
-
-Check the extracted fields against the article, including as applicable:
-
-- Targeted disorder / application domain
-- Clinical or functional purpose
-- Study design
-- Database
-- Dataset availability
-- Sample size
-- Biosound modality
-- Features seats
-- Additional data
-- Feature representation strategy
-- ML paradigm
-- Proposed ML algoritm
-- Computational workflow architecture
-- Computational infrastructure
-- Architectural deployment strategy
-- Deployment maturity
-- Deployment level
-- Clinical setting
-- Real-time capability
-- Privacy/confidentiality mechanisms
-- Explainability
-- Primary ML task(s)
-- Quantitative ML result(s)
-- Quantitative computational result(s)
-- Type(s) of validation
-
-For fields that are clearly supported, simply indicate that they are consistent. Do not generate unnecessary commentary.
-
-### 3. Distinguish uncertainty from error
-
-This distinction is essential.
-
-If an extracted value is not the only possible interpretation but remains defensible under the extraction rules, DO NOT request a correction.
-
-For example:
-
-"Cloud" versus another plausible architectural interpretation should not be changed if the current classification is supported by the authors' described target architecture and is compatible with the taxonomy.
-
-Similarly, do not remove a mechanism or category merely because its implementation is not described in maximal technical detail if the article provides sufficient evidence under the extraction rules.
-
-Only flag it when the evidence is genuinely insufficient or contradictory.
-
-### 4. Architectural audit
-
-Pay particular attention to internal consistency between:
-
-- Computational workflow architecture
-- Computational infrastructure
-- Architectural deployment strategy
-- Deployment maturity
-- Real-time capability
-- Privacy mechanisms
-
-These fields must describe a coherent computational architecture.
-
-For example, if an article explicitly performs signal processing and inference locally on an embedded microcontroller, an extracted workflow stating that those operations occur in the Cloud would constitute a material inconsistency and should be corrected.
-
-### 5. Results and validation
-
-Verify that:
-
-- reported metrics correspond to the stated task;
-- the reported numbers match the article;
-- cross-validation/hold-out strategies are represented correctly;
-- subject-independent validation is not confused with recording-level validation;
-- runtime/resource metrics correspond to what was actually measured.
-
-Do not request additional metrics simply because they exist in the paper. The extraction does not need to be exhaustive.
-
-### 6. Impact on the SLR
-
-If you identify a required correction, explicitly classify its likely impact as:
-
-- Negligible: isolated coding error unlikely to affect any synthesis.
-- Minor: may slightly affect a frequency/count or secondary result.
-- Potentially material: could affect an RQ result, synthesis, or conclusion.
-
-Do NOT state that an isolated extraction error "invalidates the SLR" unless there is evidence of a systematic problem capable of materially altering its conclusions.
-
-A systematic review is not invalidated merely because one field in one article could have been coded more precisely.
-
-## OUTPUT FORMAT
-
-Use the following concise structure:
-
-```markdown
 ## [First author et al., year]
 
-### Overall verdict
+### Field-by-field audit
 
-PASS / PASS WITH MINOR UNCERTAINTIES / CORRECTION REQUIRED
-
-### Extraction audit
-
-Briefly identify the main groups of fields that are correctly supported.
-
-Only discuss individual fields in detail when:
-
-- evidence is ambiguous;
-- there is an internal inconsistency;
-- or a correction is genuinely required.
+| Field | Existing value | Verdict | Evidence or verification needed |
+|---|---|---|---|
+| [Field name] | [Value as recorded] | [CORRECT / INCORRECT / NEEDS REVIEW] | [Leave blank for CORRECT. Otherwise, give the reason and source location or specify what to verify.] |
 
 ### Required corrections
 
-If none:
+For each **INCORRECT** field, report:
 
-**None. The existing extraction can be retained.**
+- **Field:** [Field name]
+- **Current value:** [Value as recorded]
+- **Recommended value:** [Evidence-supported replacement, or “To be verified” if the error is clear but the replacement cannot be established]
+- **Reason:** [Brief explanation grounded in the supplied evidence and extraction rules]
 
-If corrections are necessary, provide:
+If no errors are confirmed, write **No confirmed corrections.**
 
-**Field:** [field name]
+### Overall verdict
 
-**Current value:**
+Choose one verdict based on the field-level findings:
 
-[existing value]
+- **PASS** if every field is **CORRECT**.
+- **REVIEW REQUIRED** if at least one field **NEEDS REVIEW** and no field is **INCORRECT**.
+- **CORRECTION REQUIRED** if at least one field is **INCORRECT**. List any fields that also **NEED REVIEW** separately.
 
-**Recommended value:**
-
-[corrected value]
-
-**Reason:**
-
-Explain concisely why the current extraction cannot reasonably be sustained from the article and extraction rules.
-
-**Impact on SLR:** Negligible / Minor / Potentially material
-
-### Final assessment
-
-State explicitly whether:
-
-- the row can remain unchanged;
-- a minor correction is advisable;
-- or a correction is necessary before finalizing the SLR.
-```
-
-## CRITICAL BEHAVIOUR
-
-Do not turn this audit into a new data-extraction exercise.
-
-Do not suggest improvements "just to be safe."
-
-Do not optimize wording.
-
-Do not introduce new taxonomies.
-
-Do not reinterpret already defensible classifications merely because you prefer another one.
-
-Do not require stronger evidence than the original extraction protocol requires.
-
-Do not treat minor uncertainty as methodological failure.
-
-Be rigorous enough to detect real mistakes, but conservative enough to preserve valid completed work.
-
-The fundamental question for every field is:
-
-"Is the existing extracted value reasonably defensible from the original article under the predefined extraction rules?"
-
-If YES, retain it.
-
-If NO, recommend a correction and explain why.
+Report the number of fields in each category and state the action to take before finalising the row.
