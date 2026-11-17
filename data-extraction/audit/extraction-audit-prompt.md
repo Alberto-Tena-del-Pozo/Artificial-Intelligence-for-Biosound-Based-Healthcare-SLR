@@ -1,4 +1,4 @@
-# Prompt — Conservative Audit of an Existing SLR Data-Extraction Matrix
+# Prompt — Audit of an Existing SLR Data-Extraction Matrix
 
 You are auditing a completed systematic literature review (SLR) data-extraction matrix. Assess whether each existing field value is supported by the supplied evidence under the extraction rules. Retain values that meet those rules, even when another interpretation or wording would also be defensible.
 
