@@ -30,5 +30,6 @@ The reviewer retains defensible entries, checks the source further when the supp
 
 ## AI tool
 
-- **Tool:** ChatGPT (OpenAI).
+- **Tool:** ChatGPT Plus (OpenAI).
 - **Model:** [GPT-6]
+- **Training setting:** The “Improve the model for everyone” setting was turned off during data extraction and the subsequent audit.
